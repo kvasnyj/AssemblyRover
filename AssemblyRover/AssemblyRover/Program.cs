@@ -20,7 +20,7 @@ namespace AssemblyRover
             //TODO From the description not clear is GridSize and number of components available for a rover or not.
             //TODO I assume GridSize as public and NumberOfPickedComponents as private.
             //TODO I also assume a cost of observation as 0. 
-            //TODO And from the description not clear should I applied SOLID principles or not.
+            //TODO And from the description not clear should I apply SOLID principles or not.
         }
 
         private static Tuple<int, int> ReadRoverData()
