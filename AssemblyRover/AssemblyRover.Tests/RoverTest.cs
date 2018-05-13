@@ -13,16 +13,22 @@ namespace AssemblyRover.Tests
             return route.Count(c => c.Equals('P'));
         }
 
+        private static bool CheckRouteLenght(string route, int gridSize)
+        {
+            return route.Length >= gridSize * gridSize - NumberOfPickup(route) - 1;
+        }
+
         [TestMethod]
         public void Figure1()
         {
+            var gridSize = 2;
             var grid = new Grid
             (
-                2,
+                gridSize,
                 new List<Tuple<int, int>>
                 {
-                    new Tuple<int, int> (1, 1),
-                    new Tuple<int, int> (0, 0)
+                    new Tuple<int, int>(1, 1),
+                    new Tuple<int, int>(0, 0)
                 }
             );
 
@@ -32,14 +38,16 @@ namespace AssemblyRover.Tests
             //TODO Compare not only count but coordinates also.
             Assert.IsTrue(grid.CheckNumberOfComponent(rover.NumberOfPickedComponents));
             Assert.AreEqual(NumberOfPickup(route), rover.NumberOfPickedComponents);
+            Assert.IsTrue(CheckRouteLenght(route, gridSize));
         }
 
         [TestMethod]
         public void Figure2()
         {
+            var gridSize = 3;
             var grid = new Grid
             (
-                3,
+                gridSize,
                 new List<Tuple<int, int>>
                 {
                     new Tuple<int, int>(1, 1),
@@ -52,19 +60,21 @@ namespace AssemblyRover.Tests
 
             Assert.IsTrue(grid.CheckNumberOfComponent(rover.NumberOfPickedComponents));
             Assert.AreEqual(NumberOfPickup(route), rover.NumberOfPickedComponents);
+            Assert.IsTrue(CheckRouteLenght(route, gridSize));
         }
 
         [TestMethod]
         public void Figure3()
         {
+            var gridSize = 4;
             var grid = new Grid
             (
-                4,
+                gridSize,
                 new List<Tuple<int, int>>
                 {
-                    new Tuple<int, int> (1, 0),
-                    new Tuple<int, int> (2, 2),
-                    new Tuple<int, int> (0, 3)
+                    new Tuple<int, int>(1, 0),
+                    new Tuple<int, int>(2, 2),
+                    new Tuple<int, int>(0, 3)
                 }
             );
 
@@ -73,21 +83,23 @@ namespace AssemblyRover.Tests
 
             Assert.IsTrue(grid.CheckNumberOfComponent(rover.NumberOfPickedComponents));
             Assert.AreEqual(NumberOfPickup(route), rover.NumberOfPickedComponents);
+            Assert.IsTrue(CheckRouteLenght(route, gridSize));
         }
 
         [TestMethod]
         public void Figure4()
         {
+            var gridSize = 8;
             var grid = new Grid
             (
-                8,
+                gridSize,
                 new List<Tuple<int, int>>
                 {
-                    new Tuple<int, int> (5, 4),
-                    new Tuple<int, int> (6, 6),
-                    new Tuple<int, int> (1, 0),
-                    new Tuple<int, int> (0, 5),
-                    new Tuple<int, int> (5, 1)
+                    new Tuple<int, int>(5, 4),
+                    new Tuple<int, int>(6, 6),
+                    new Tuple<int, int>(1, 0),
+                    new Tuple<int, int>(0, 5),
+                    new Tuple<int, int>(5, 1)
                 }
             );
 
@@ -96,6 +108,7 @@ namespace AssemblyRover.Tests
 
             Assert.IsTrue(grid.CheckNumberOfComponent(rover.NumberOfPickedComponents));
             Assert.AreEqual(NumberOfPickup(route), rover.NumberOfPickedComponents);
+            Assert.IsTrue(CheckRouteLenght(route, gridSize));
         }
     }
 }
