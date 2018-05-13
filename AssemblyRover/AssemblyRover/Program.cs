@@ -13,7 +13,7 @@ namespace AssemblyRover
             var rover = new Rover(grid, roverPosition.Item1, roverPosition.Item2);
             var route = rover.Collect();
 
-            Console.WriteLine("The route is: " + route);
+            Console.WriteLine($"The route is: {route}");
             Console.WriteLine("Press enter to continue");
             Console.ReadLine();
 
